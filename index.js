@@ -1,6 +1,5 @@
 var fs = require('fs');
-var buffer = new Buffer(30);
-buffer.write(fs.readFileSync('index.html'),"utf-8")
+var buffer = fs.readFileSync('index.html')
 
 
 var express = require('express')
@@ -10,7 +9,7 @@ app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
 
 app.get('/', function(request, response) {
-  response.send(buffer.toString("utf-8"))
+  response.send(buffer)
 })
 
 app.listen(app.get('port'), function() {
