@@ -1,5 +1,5 @@
 var fs = require('fs');
-var buffer = fs.readFileSync('index.html')
+var text = fs.readFileSync('index.html','utf8') 
 
 
 var express = require('express')
@@ -9,7 +9,7 @@ app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
 
 app.get('/', function(request, response) {
-  response.send(buffer)
+  response.send(text)
 })
 
 app.listen(app.get('port'), function() {
